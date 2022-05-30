@@ -7,31 +7,40 @@ import javafx.scene.control.Button;
 
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 
 public class promos extends Stage implements EventHandler {
 
 
     private VBox vbox1;
-    private HBox hbox1;
+    private HBox hbox1,hbox2;
     Scene escena;
     private GridPane gdpMenu;
-    private Button btnChorizo, btnCabeza, btnPastor;
+    private Button btnChorizo, btnCabeza, btnPastor,btnSaveOrden;
     private Button[][] arBtnpromos = new Button[1][3];
     private String nombrePromos[] = {"familiar", "en pareja", "tacoman"};
-
+    private Integer precioRefrescos[] = {150, 120, 260};
     private Image imagenCabeza;
     private ImageView imvCabeza;
+    public ArrayList<String> taco = new ArrayList<String>();
+    public ArrayList<Integer> tacop = new ArrayList<Integer>();
+    public ArrayList<Integer> tacuan = new ArrayList<Integer>();
 
-    public promos() {
+    public promos(ArrayList<String> taco, ArrayList<Integer> tacop,ArrayList<Integer> tacuan) {
         crearUI();
-        this.setTitle("tacos");
+        this.setTitle("promociones");
         this.setScene(escena);
         this.show();
+        this.taco = taco;
+        this.tacop = tacop;
+        this.tacuan = tacuan;
     }
 
     private void crearUI() {
@@ -44,7 +53,20 @@ public class promos extends Stage implements EventHandler {
         hbox1 = new HBox();
         hbox1.getChildren().add(gdpMenu);
         vbox1 = new VBox();
-        vbox1.getChildren().add(hbox1);
+
+        hbox2=new HBox();
+        btnSaveOrden=new Button();
+        btnSaveOrden.setText("Registrar Orden");
+        btnSaveOrden.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                new categorias(taco,tacop,tacuan);
+                Stage stage = (Stage) btnSaveOrden.getScene().getWindow();
+                stage.close();
+            }
+        });
+        hbox2.getChildren().add(btnSaveOrden);
+        vbox1.getChildren().addAll(hbox1,hbox2);
         escena = new Scene(vbox1,400,600);
     }
 
@@ -61,6 +83,26 @@ public class promos extends Stage implements EventHandler {
                 arBtnpromos[j][i] = new Button();
                 arBtnpromos[j][i].setText(nombrePromos[p]);
                 arBtnpromos[j][i].setId(nombrePromos[p]);
+                arBtnpromos[j][i].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        // taco.add(nombreTacos[cb]);
+                        for (int r = 0; r < 4; r++) {
+                            if (event.getSource() == arBtnpromos[0][r]) {
+                                //System.out.println(nombreTacos[r]);
+                                //taco.add(nombrePromos[r]);
+                                //tacop.add(precioRefrescos[r]);
+                                for (int i = 0; i< taco.size();i++) {
+                                    if(taco.get(i)==nombrePromos[r]){
+                                        tacop.set(i,tacop.get(i)+precioRefrescos[r]);
+                                        tacuan.set(i,tacuan.get(i)+1);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                });
                 //arBtnTacos[j][i].setGraphic(imvCabeza);
                 gdpMenu.add( arBtnpromos[j][i], i, j);
 

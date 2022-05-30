@@ -7,9 +7,9 @@ public class Conexion {
 
     private static String server = "127.0.0.1";
     private static String user   = "root";
-    private static String pwd    = "qweasdzxc123";
+    private static String pwd    = "portal23456";
     private static String bd     = "taqueriadb";
-
+//qweasdzxc123
     public static Connection conexion;
     public static void crearConexion(){
         try {

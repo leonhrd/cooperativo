@@ -17,12 +17,17 @@ import sample.componentes.Corredor;
 import sample.models.Conexion;
 import sample.views.*;
 
+import java.util.ArrayList;
+
 public class Main extends Application implements EventHandler{
 
     private MenuBar mnbPrincipal;
     private Menu menCompetencia1, menCompetencia2;
     private MenuItem mitLoteria, mitParseador, mitClientes,mitPista, mitCategorias;
     private VBox vBox;
+    public ArrayList<String> taco = new ArrayList<String>();
+    public ArrayList<Integer> tacop = new ArrayList<Integer>();
+    public ArrayList<Integer> tacuan = new ArrayList<Integer>();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -79,7 +84,42 @@ public class Main extends Application implements EventHandler{
             case 2: new Parseador(); break;
             case 3: new ClientesBD(); break;
             case 4: new pista(); break;
-            case 5: new categorias(); break;
+            //"Chorizo", "Asada", "Pastor","cocacola", "seven up", "sangría","familiar", "en pareja", "tacoman"
+            case 5:
+                taco.clear();
+                taco.add("Chorizo");
+                taco.add("Asada");
+                taco.add("Pastor");
+                taco.add("cocacola");
+                taco.add("seven up");
+                taco.add("sangría");
+                taco.add("familiar");
+                taco.add("en pareja");
+                taco.add("tacoman");
+
+                tacop.clear();
+                tacop.add(0);
+                tacop.add(0);
+                tacop.add(0);
+                tacop.add(0);
+                tacop.add(0);
+                tacop.add(0);
+                tacop.add(0);
+                tacop.add(0);
+                tacop.add(0);
+
+                tacuan.clear();
+                tacuan.add(0);
+                tacuan.add(0);
+                tacuan.add(0);
+                tacuan.add(0);
+                tacuan.add(0);
+                tacuan.add(0);
+                tacuan.add(0);
+                tacuan.add(0);
+                tacuan.add(0);
+                new categorias(taco,tacop,tacuan);
+                break;
         }
     }
 
