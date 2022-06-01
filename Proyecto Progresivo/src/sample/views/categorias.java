@@ -5,6 +5,8 @@ import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -43,9 +45,25 @@ public class categorias extends Stage implements EventHandler {
         vbox1=new VBox();
         vbox1.setSpacing(30);
         vbox1.setPadding(new Insets(60));
-        tacos=new Button("tacos");
+
+
+        Image img=new Image("sample/images/pastor.jpg");
+        ImageView imv=new ImageView(img);
+        tacos=new Button();
+        imv.setFitHeight(150);
+        imv.setFitWidth(200);
+        tacos.setGraphic(imv);
+
+
+
+
+
         paquetes=new Button("refrescos");
+
+
         refrescos=new Button("promos");
+
+
         ticket = new Button("ver ticket");
         mostrarT = new Button("revisar tabla");
         finord = new Button("Finalizar orden");
