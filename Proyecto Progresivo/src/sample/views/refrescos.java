@@ -26,7 +26,8 @@ public class refrescos extends Stage implements EventHandler {
     private GridPane gdpMenu;
     private Button btnChorizo, btnCabeza, btnPastor,btnSaveOrden;
     private Button[][] arBtnRefresos = new Button[1][3];
-    private String nombreRefrescos[] = {"cocacola", "seven up", "sangría"};
+    private String nombreRefrescos[] = {"cocas.jpeg", "7up.jpg", "sangrias.png"};
+    private String nombreRefrescosTitle[] = {"Coca cola", "Seven Up", "Sangría"};
     private Integer precioRefrescos[] = {15, 13, 20};
     public ArrayList<String> taco = new ArrayList<String>();
     public ArrayList<Integer> tacop = new ArrayList<Integer>();
@@ -75,7 +76,7 @@ public class refrescos extends Stage implements EventHandler {
 
 
 
-        escena = new Scene(vbox1,400,600);
+        escena = new Scene(vbox1,900,600);
     }
 
 
@@ -84,23 +85,24 @@ public class refrescos extends Stage implements EventHandler {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 1; j++) {
 
-            /*   Image imagenCabeza=new Image("sample/images/cabeza.jpg");
-               ImageView imvCabeza=new ImageView(imagenCabeza);
-                imvCabeza.setFitHeight(90);
-                imvCabeza.setFitWidth(80);*/
                 arBtnRefresos[j][i] = new Button();
-                arBtnRefresos[j][i].setText(nombreRefrescos[p]);
+
+                arBtnRefresos[j][i].setText(nombreRefrescosTitle[p]);
+
+                Image imgCartP = new Image("sample/images/"+nombreRefrescos[i]);
+                ImageView imv = new ImageView(imgCartP);
+                imv.setFitHeight(120);
+                imv.setFitWidth(150);
+
+                arBtnRefresos[j][i].setGraphic(imv);
                 arBtnRefresos[j][i].setId(nombreRefrescos[p]);
-                arBtnRefresos[j][i].setPrefHeight(70);
                 arBtnRefresos[j][i].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        // taco.add(nombreTacos[cb]);
+
                         for (int r = 0; r < 4; r++) {
                             if (event.getSource() == arBtnRefresos[0][r]) {
-                                //System.out.println(nombreTacos[r]);
-                                //taco.add(nombreRefrescos[r]);
-                                //tacop.add(precioRefrescos[r]);
+
                                 for (int i = 0; i< taco.size();i++) {
                                     if(taco.get(i)==nombreRefrescos[r]){
                                         tacop.set(i,tacop.get(i)+precioRefrescos[r]);
@@ -121,22 +123,6 @@ public class refrescos extends Stage implements EventHandler {
         }
 
 
-
-
-       /* imagenCabeza = new Image("sample/images/cabeza.jpg");
-        imvCabeza = new ImageView(imagenCabeza);
-        imvCabeza.setFitWidth(90);
-     */
-        //btnCabeza.setGraphic(imvCabeza);
-
-
-        //  Image imgCartP = new Image("sample/images/"+arImagenes[2]);
-        // ImageView imv = new ImageView(imgCartP);
-        //imv.setFitHeight(60);
-        //imv.setFitWidth(50);
-        //arBtnPlantilla[j][i] = new Button();
-        //arBtnPlantilla[j][i].setGraphic(imv);
-        //gdpPlantilla.add(arBtnPlantilla[j][i],i,j);
 
 
     }

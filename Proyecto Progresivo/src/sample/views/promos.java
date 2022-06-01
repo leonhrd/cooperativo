@@ -77,10 +77,7 @@ public class promos extends Stage implements EventHandler {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 1; j++) {
 
-            /*   Image imagenCabeza=new Image("sample/images/cabeza.jpg");
-               ImageView imvCabeza=new ImageView(imagenCabeza);
-                imvCabeza.setFitHeight(90);
-                imvCabeza.setFitWidth(80);*/
+
                 arBtnpromos[j][i] = new Button();
                 arBtnpromos[j][i].setText(nombrePromos[p]);
                 Image imgCartP = new Image("sample/images/"+nombreImgs[i]);
@@ -113,26 +110,6 @@ public class promos extends Stage implements EventHandler {
 
             }
         }
-
-
-
-
-       /* imagenCabeza = new Image("sample/images/cabeza.jpg");
-        imvCabeza = new ImageView(imagenCabeza);
-        imvCabeza.setFitWidth(90);
-     */
-        //btnCabeza.setGraphic(imvCabeza);
-
-
-        //  Image imgCartP = new Image("sample/images/"+arImagenes[2]);
-        // ImageView imv = new ImageView(imgCartP);
-        //imv.setFitHeight(60);
-        //imv.setFitWidth(50);
-        //arBtnPlantilla[j][i] = new Button();
-        //arBtnPlantilla[j][i].setGraphic(imv);
-        //gdpPlantilla.add(arBtnPlantilla[j][i],i,j);
-
-
     }
 
 

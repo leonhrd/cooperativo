@@ -58,7 +58,7 @@ public class Main extends Application implements EventHandler{
             @Override
             public void handle(WindowEvent event) {
                 Alert alerta = new Alert(Alert.AlertType.WARNING);
-                alerta.setTitle("Bienvenidos :)");
+                alerta.setTitle("Bienvenidos se va a cerrar :)");
                 alerta.setHeaderText("Mensaje del Sistema :)");
                 alerta.setContentText("Manejo de eventos de la ventana usando dialogos");
                 alerta.showAndWait();
@@ -132,7 +132,7 @@ public class Main extends Application implements EventHandler{
     @Override
     public void handle(Event event) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
-        alerta.setTitle("Bienvenidos :)");
+        alerta.setTitle("se te va aabrir :)");
         alerta.setHeaderText("Mensaje del Sistema :)");
         alerta.setContentText("Manejo de eventos de la ventana usando dialogos");
         alerta.showAndWait();

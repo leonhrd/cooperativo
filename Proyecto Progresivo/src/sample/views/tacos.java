@@ -2,6 +2,7 @@ package sample.views;
 
 import javafx.event.Event;
 import javafx.event.EventHandler;
+import javafx.event.EventType;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -12,6 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 //import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -26,7 +28,8 @@ public class tacos extends Stage implements EventHandler {
     private GridPane gdpMenu;
     private Button btnChorizo, btnCabeza, btnPastor, btnSaveOrden;
     private Button[][] arBtnTacos = new Button[1][3];
-    private String nombreTacos[] = {"Chorizo", "Asada", "Pastor"};
+    private String nombreTacos[] = {"De chorizo.jpg", "De asada.jpg", "De pastor.jpg"};
+    private String nombreTacosTitle[] = {"De chorizo", "De asada", "De pastor"};
     private Integer precioTacos[] = {25, 30, 40};
     public ArrayList<String> taco = new ArrayList<String>();
     public ArrayList<Integer> tacop = new ArrayList<Integer>();
@@ -50,10 +53,10 @@ public class tacos extends Stage implements EventHandler {
 
         gdpMenu = new GridPane();
         crearMenu();
-        //  imagenCabeza=new Image("sample/images/cabeza.jpg");
-        //   imvCabeza=new Image(imagenCabeza);
+
         hbox1 = new HBox();
-        hbox1.setSpacing(6);
+        hbox1.setSpacing(15);
+
         hbox1.getChildren().add(gdpMenu);
         vbox1 = new VBox();
         vbox1.setPadding(new Insets(50));
@@ -76,8 +79,11 @@ public class tacos extends Stage implements EventHandler {
 
 
 
-        escena = new Scene(vbox1,400,600);
+        escena = new Scene(vbox1,900,600);
     }
+
+
+
 
 
     private void crearMenu() {
@@ -85,23 +91,24 @@ public class tacos extends Stage implements EventHandler {
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 1; j++) {
 
-            /*   Image imagenCabeza=new Image("sample/images/cabeza.jpg");
-               ImageView imvCabeza=new ImageView(imagenCabeza);
-                imvCabeza.setFitHeight(90);
-                imvCabeza.setFitWidth(80);*/
+
                 arBtnTacos[j][i] = new Button();
-                arBtnTacos[j][i].setText(nombreTacos[p]);
+
+                arBtnTacos[j][i].setText(nombreTacosTitle[p]);
+                Image imgCartP = new Image("sample/images/"+nombreTacos[i]);
+                ImageView imv = new ImageView(imgCartP);
+                imv.setFitHeight(120);
+                imv.setFitWidth(150);
+
+                arBtnTacos[j][i].setGraphic(imv);
                 arBtnTacos[j][i].setId(nombreTacos[p]);
-                arBtnTacos[j][i].setPrefHeight(70);
                 arBtnTacos[j][i].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                       // taco.add(nombreTacos[cb]);
+
                         for (int r = 0; r < 4; r++) {
                                 if (event.getSource() == arBtnTacos[0][r]) {
-                                    //System.out.println(nombreTacos[r]);
-                                    //taco.add(nombreTacos[r]);
-                                    //tacop.add(precioTacos[r]);
+
                                     for (int i = 0; i< taco.size();i++) {
                                         if(taco.get(i)==nombreTacos[r]){
                                             tacop.set(i,tacop.get(i)+precioTacos[r]);
@@ -113,7 +120,7 @@ public class tacos extends Stage implements EventHandler {
                         }
                     }
                 });
-                //arBtnTacos[j][i].setGraphic(imvCabeza);
+
                 gdpMenu.add(arBtnTacos[j][i], i, j);
                 p++;
 
@@ -144,6 +151,7 @@ public class tacos extends Stage implements EventHandler {
 
     @Override
     public void handle(Event event) {
+
 
 
     }

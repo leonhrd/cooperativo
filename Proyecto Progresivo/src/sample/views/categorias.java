@@ -1,6 +1,5 @@
 package sample.views;
 
-import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -61,7 +60,7 @@ public class categorias extends Stage implements EventHandler {
 
 
 
-        Image img=new Image("sample/images/pastor.jpg");
+        Image img=new Image("sample/images/lostacosbonitos.jpg");
         ImageView imv=new ImageView(img);
         tacos=new Button();
         imv.setFitHeight(150);
