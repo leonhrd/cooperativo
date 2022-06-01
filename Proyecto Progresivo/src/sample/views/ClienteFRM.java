@@ -33,7 +33,7 @@ public class ClienteFRM extends Stage {
         vBox.setPadding(new Insets(10));
         txtNombre = new TextField();
         txtNombre.setText(this.objC.getNomcte());
-        txtNombre.setPromptText("Nombre del cliente");
+        txtNombre.setPromptText("Nombre del clientes");
         txtTelefono = new TextField();
         txtTelefono.setText(this.objC.getTelcte());
         txtTelefono.setPromptText("Telefono del cliente");

@@ -118,6 +118,7 @@ public class Main extends Application implements EventHandler{
                 tacuan.add(0);
                 tacuan.add(0);
                 tacuan.add(0);
+
                 new categorias(taco,tacop,tacuan);
                 break;
         }

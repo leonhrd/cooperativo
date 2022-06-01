@@ -1,5 +1,6 @@
 package sample.views;
 
+import javafx.application.Application;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -8,17 +9,23 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import sample.models.OrdenDAO;
+
 import javax.swing.*;
 import java.util.ArrayList;
+
+
 
 
 public class categorias extends Stage implements EventHandler {
 
     private OrdenDAO ObjC;
+    private HBox hbox1,hbox2,hbox3;
     private VBox vbox1;
+
     Scene escena;
     private Button tacos;
     private Double total = 0.0;
@@ -28,8 +35,12 @@ public class categorias extends Stage implements EventHandler {
     public ArrayList<String> product = new ArrayList<String>();
     public ArrayList<Integer> productp = new ArrayList<Integer>();
     public ArrayList<Integer> tacuan = new ArrayList<Integer>();
+
     private String nombreproduct[] = {"Chorizo", "Asada", "Pastor","cocacola", "seven up", "sangría","familiar", "en pareja", "tacoman"};
     public ArrayList<Integer> tacop = new ArrayList<Integer>();
+
+
+
 
     public categorias(ArrayList<String> taco, ArrayList<Integer> tacop,ArrayList<Integer> tacuan){
         crearUI();
@@ -41,10 +52,13 @@ public class categorias extends Stage implements EventHandler {
         this.tacuan = tacuan;
     }
     private void crearUI(){
-
+       hbox1=new HBox();
+        hbox1.setSpacing(30);
+        hbox1.setPadding(new Insets(60));
         vbox1=new VBox();
         vbox1.setSpacing(30);
         vbox1.setPadding(new Insets(60));
+
 
 
         Image img=new Image("sample/images/pastor.jpg");
@@ -58,15 +72,28 @@ public class categorias extends Stage implements EventHandler {
 
 
 
-        paquetes=new Button("refrescos");
+        paquetes=new Button();
+        Image img1=new Image("sample/images/refresco.png");
+        ImageView imv1=new ImageView(img1);
+        imv1.setFitHeight(150);
+        imv1.setFitWidth(200);
+        paquetes.setGraphic(imv1);
 
-
-        refrescos=new Button("promos");
-
+        refrescos=new Button();
+        Image img2=new Image("sample/images/promo.jpg");
+        ImageView imv2=new ImageView(img2);
+        imv2.setFitHeight(150);
+        imv2.setFitWidth(200);
+        refrescos.setGraphic(imv2);
 
         ticket = new Button("ver ticket");
+
         mostrarT = new Button("revisar tabla");
         finord = new Button("Finalizar orden");
+
+        vbox1.getChildren().addAll(ticket,mostrarT,finord);
+
+
 
         tacos.setPrefWidth(80);
         tacos.setPrefHeight(60);
@@ -81,7 +108,10 @@ public class categorias extends Stage implements EventHandler {
         finord.setPrefHeight(60);
         finord.setPrefWidth(80);
 
-        vbox1.getChildren().addAll(tacos,paquetes,refrescos,ticket,mostrarT,finord);
+        hbox1.getChildren().addAll(tacos,paquetes,refrescos,vbox1);
+
+
+
         //tacos.setOnAction(event1 -> new tacos());
         tacos.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
             @Override
@@ -158,7 +188,7 @@ public class categorias extends Stage implements EventHandler {
                 }
             }
         });
-        escena=new Scene(vbox1,400,600);
+        escena=new Scene(hbox1,1200,600);
     }
 
     @Override

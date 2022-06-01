@@ -26,6 +26,7 @@ public class promos extends Stage implements EventHandler {
     private Button btnChorizo, btnCabeza, btnPastor,btnSaveOrden;
     private Button[][] arBtnpromos = new Button[1][3];
     private String nombrePromos[] = {"familiar", "en pareja", "tacoman"};
+    private String nombreImgs[] = {"familia.jpg", "individuales.jpg", "trompos.jpg"};
     private Integer precioRefrescos[] = {150, 120, 260};
     private Image imagenCabeza;
     private ImageView imvCabeza;
@@ -67,7 +68,7 @@ public class promos extends Stage implements EventHandler {
         });
         hbox2.getChildren().add(btnSaveOrden);
         vbox1.getChildren().addAll(hbox1,hbox2);
-        escena = new Scene(vbox1,400,600);
+        escena = new Scene(vbox1,900,500);
     }
 
 
@@ -82,6 +83,11 @@ public class promos extends Stage implements EventHandler {
                 imvCabeza.setFitWidth(80);*/
                 arBtnpromos[j][i] = new Button();
                 arBtnpromos[j][i].setText(nombrePromos[p]);
+                Image imgCartP = new Image("sample/images/"+nombreImgs[i]);
+                ImageView imv = new ImageView(imgCartP);
+                imv.setFitHeight(120);
+                imv.setFitWidth(150);
+                arBtnpromos[j][i].setGraphic(imv);
                 arBtnpromos[j][i].setId(nombrePromos[p]);
                 arBtnpromos[j][i].addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
                     @Override
@@ -89,9 +95,6 @@ public class promos extends Stage implements EventHandler {
                         // taco.add(nombreTacos[cb]);
                         for (int r = 0; r < 4; r++) {
                             if (event.getSource() == arBtnpromos[0][r]) {
-                                //System.out.println(nombreTacos[r]);
-                                //taco.add(nombrePromos[r]);
-                                //tacop.add(precioRefrescos[r]);
                                 for (int i = 0; i< taco.size();i++) {
                                     if(taco.get(i)==nombrePromos[r]){
                                         tacop.set(i,tacop.get(i)+precioRefrescos[r]);
@@ -103,7 +106,7 @@ public class promos extends Stage implements EventHandler {
                         }
                     }
                 });
-                //arBtnTacos[j][i].setGraphic(imvCabeza);
+
                 gdpMenu.add( arBtnpromos[j][i], i, j);
 
                 p++;
